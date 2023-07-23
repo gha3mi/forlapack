@@ -42,7 +42,7 @@ To use ForLAPACK, follow the steps below:
   **GNU Fortran Compiler (gfortran)**
 
    ```shell
-   fpm install --prefix . --compiler gfortran "flag -O3 -frecursive"
+   fpm install --prefix . --compiler gfortran --flag "-O3 -frecursive"
    ```
 
 ## Contributing
