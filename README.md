@@ -4,16 +4,6 @@
 
 ## How to Use ForLAPACK
 
-### Adding ForLAPACK as an fpm Dependency
-
-If you want to use ForLAPACK as a dependency in your own fpm project,
-you can easily include it by adding the following line to your `fpm.toml` file:
-
-```toml
-[dependencies]
-forlapack = {git="https://github.com/gha3mi/forlapack.git"}
-```
-
 ### Installation of ForLAPACK Library
 
 To use ForLAPACK, follow the steps below:
@@ -27,7 +17,7 @@ To use ForLAPACK, follow the steps below:
    You can clone the ForLAPACK repository from GitHub using the following command:
 
    ```shell
-   git clone https://github.com/gha3mi/forlapack.git
+   git clone --recurse-submodules https://github.com/gha3mi/forlapack.git
    ```
 
    ```shell
