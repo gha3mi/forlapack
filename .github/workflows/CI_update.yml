@@ -24,5 +24,3 @@ jobs:
         git add .
         git diff-index --quiet HEAD || git commit -m "Update LAPACK"
         git push origin main
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
