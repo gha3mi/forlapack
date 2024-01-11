@@ -1,0 +1,28 @@
+name: Update LAPACK
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # Run every Monday at midnight UTC
+
+jobs:
+  update-submodules:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Pull latest changes
+      run: git pull origin main
+
+    - name: Update LAPACK
+      run: |
+        git submodule update --recursive --remote
+        git config --global user.email "${{ secrets.GIT_USER_EMAIL }}"
+        git config --global user.name "${{ secrets.GIT_USER_NAME }}"
+        git add .
+        git diff-index --quiet HEAD || git commit -m "Update LAPACK"
+        git push
+      env:
+        GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
+        GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
