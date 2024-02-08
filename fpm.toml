@@ -1,5 +1,7 @@
 name       = "forlapack"
 maintainer = "info@gha3mi.com"
+copyright  = "Copyright (c) 2023, Seyed Ali Ghasemi"
+license    = "BSD-3"
 
 [build]
 auto-executables = false
@@ -17,6 +19,3 @@ source-form       = "default"
 
 [library]
 source-dir = "src/SRC"
-
-[dependencies]
-forblas = {git="https://github.com/gha3mi/forblas.git"}

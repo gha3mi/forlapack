@@ -7,11 +7,11 @@
 
 ## How to Build
 
-### Requirements:
+### 1. Requirements:
 
 - Fortran Compiler
 
-### Clone the Repository:
+### 2. Clone the Repository:
 
 Clone the ForLAPACK repository from GitHub using the following command:
 
@@ -25,15 +25,13 @@ Change to the ForLAPACK directory:
 cd forlapack
 ```
 
-### Get the Latest LAPACK Source Code:
-
-Update and initialize submodules to fetch the latest LAPACK source code:
+Get the Latest LAPACK Source Code:
 
 ```shell
 git submodule update --init --recursive
 ```
 
-### Remove the `DEPRECATED` Directory:
+### 3. Remove the `DEPRECATED` Directory:
 
 Remove the `src/SRC/DEPRECATED` directory from LAPACK source code:
 
@@ -41,7 +39,15 @@ Remove the `src/SRC/DEPRECATED` directory from LAPACK source code:
 rm -r src/SRC/DEPRECATED
 ```
 
-### Build Using the Fortran Package Manager (fpm):
+### 4. Copy `INSTALL` Directory:
+
+Copy the `src/INSTALL` directory to the `src/SRC` directory:
+
+```shell
+cp -r src/INSTALL src/SRC
+```
+
+### 5. Install Using the Fortran Package Manager (fpm):
 
 ForLAPACK can be built using [fpm](https://github.com/fortran-lang/fpm). Ensure that you have fpm installed and then execute the following command:
 
@@ -56,6 +62,9 @@ Adjust the installation directory, compiler, and flags as needed:
 - Use `--compiler <compiler>` to specify your Fortran compiler.
 - Use `--flag '<flags>'` to customize your compiler flags.
 
+## ForBLAS
+
+To install BLAS, use [ForBLAS](https://github.com/gha3mi/forblas).
 
 ## Contributing
 
