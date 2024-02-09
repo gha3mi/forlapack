@@ -1,70 +1,64 @@
+# ForLAPACK
+
 [![GitHub](https://img.shields.io/badge/GitHub-forlapack-blue.svg?style=social&logo=github)](https://github.com/gha3mi/forlapack)
 [![License](https://img.shields.io/github/license/gha3mi/forlapack?color=green)](https://github.com/gha3mi/forlapack/blob/main/LICENSE)
 
-**ForLAPACK** compiles the latest [LAPACK](https://github.com/Reference-LAPACK/lapack) using the Fortran Package Manager (fpm).
+**ForLAPACK** simplifies the compilation of the latest [LAPACK](https://github.com/Reference-LAPACK/lapack) library using the Fortran Package Manager (fpm).
 
 <!-- ![ForLAPACK](media/logo.png) -->
 
-## How to Build
+## Install Instructions
 
-### 1. Requirements:
+### 1. Prerequisites:
 
-- Fortran Compiler
+Ensure you have a Fortran compiler installed on your system.
 
 ### 2. Clone the Repository:
 
-Clone the ForLAPACK repository from GitHub using the following command:
+Clone the ForLAPACK repository from GitHub, including submodules:
 
 ```shell
 git clone --recurse-submodules https://github.com/gha3mi/forlapack.git
-```
-
-Change to the ForLAPACK directory:
-
-```shell
 cd forlapack
-```
-
-Get the Latest LAPACK Source Code:
-
-```shell
 git submodule update --init --recursive
 ```
 
-### 3. Remove the `DEPRECATED` Directory:
+### 3. Preparation:
 
-Remove the `src/SRC/DEPRECATED` directory from LAPACK source code:
+Remove the `DEPRECATED` directory from LAPACK source code:
 
 ```shell
 rm -r src/SRC/DEPRECATED
 ```
 
-### 4. Copy `INSTALL` Directory:
-
-Copy the `src/INSTALL` directory to the `src/SRC` directory:
+Copy the `src/INSTALL` directory to `src/SRC`:
 
 ```shell
 cp -r src/INSTALL src/SRC
 ```
 
-### 5. Install Using the Fortran Package Manager (fpm):
+### 4. Install LAPACK Using fpm:
 
-ForLAPACK can be built using [fpm](https://github.com/fortran-lang/fpm). Ensure that you have fpm installed and then execute the following command:
+Install ForLAPACK using [fpm](https://github.com/fortran-lang/fpm):
 
 ```shell
 fpm install --profile release --prefix .
 ```
-The compiled library can be found in the `lib` directory.
 
-Adjust the installation directory, compiler, and flags as needed:
+The compiled library will be located in the `lib` directory.
+
+Adjust installation directory, compiler, and flags as needed:
 
 - Use `--prefix <dir>` to set the installation directory.
 - Use `--compiler <compiler>` to specify your Fortran compiler.
-- Use `--flag '<flags>'` to customize your compiler flags.
+- Use `--flag '<flags>'` to customize compiler flags.
 
-## ForBLAS
+## Integrating LAPACK and BLAS in Your fpm Package
 
-To install BLAS, use [ForBLAS](https://github.com/gha3mi/forblas).
+- Install [ForBLAS](https://github.com/gha3mi/forblas) and ForLAPACK.
+- Copy `libforblas.a` and `libforlapack.a` from the `lib` directory of ForBLAS and ForLAPACK to your fpm package's `lib` directory.
+- Add `link = ["forlapack", "forblas"]` to your `fpm.toml` file.
+- When using fpm, include `--flag '-Llib'` to specify the library directory.
 
 ## Contributing
 
